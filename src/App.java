@@ -1,5 +1,6 @@
 /**
  * Created by ryanbarsatan on 3/21/17.
+ * App and GUI for the VOR implementation
  */
 
 import javax.swing.*;
@@ -37,10 +38,15 @@ public class App {
         final JPanel ff = new JPanel(){
             public void paintComponent(Graphics g){
                 // Draw what you want to appear on your JPanel here
-//                g.drawOval(0,0,300,300);
-
+                g.setColor(Color.white);
+                g.fillOval(0,0,400,400);
+                g.setColor(Color.black);
+                g.drawLine(100, 200, 300, 200);
+                g.setColor(Color.red);
+                g.drawLine(vor.xline,vor.yline,vor.x2line.intValue(),vor.y2line.intValue());
             }
         };
+        ff.setPreferredSize(new Dimension(400,400));
         final Graphics g = ff.getGraphics();
         final JLabel inflection = new JLabel("Degree Inflection: ");
         ff.add(inflection);
@@ -49,7 +55,7 @@ public class App {
         final JFrame frameobs = new JFrame("OBS");
         frameobs.add(ff);
         frameobs.setVisible(true);
-        frameobs.setSize(new Dimension(300, 300));
+        frameobs.setSize(new Dimension(400, 430));
 
 
 
@@ -62,7 +68,7 @@ public class App {
                 direction.setText("Direction: " + vor.getDirection());
                 signal.setText("Signal: " + vor.getSignal());
 
-                inflection.setText("Degree Inflection: " + vor.inflection);
+                inflection.setText("Degree Inflection: " + vor.trueinflection);
                 frameobs.repaint();
 
             }
